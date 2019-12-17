@@ -1,22 +1,22 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # mac_changer.py - simple MAC address changer for network interfaces.
 
 import subprocess
-import optparse
+import argparse
 import re
 
 
-def get_options():
-    parser = optparse.OptionParser()
-    parser.add_option("-i", "--interface", dest="interface", help="interface to change its MAC address")
-    parser.add_option("-m", "--mac", dest="mac_address", help="new MAC address")
-    opts, args = parser.parse_args()
-    if opts.interface is None:
+def get_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--interface", dest="interface", help="interface to change its MAC address")
+    parser.add_argument("-m", "--mac", dest="mac_address", help="new MAC address")
+    arguments = parser.parse_args()
+    if arguments.interface is None:
         parser.error("[-] please specify an interface, use --help for more information")
-    elif opts.mac_address is None:
+    elif arguments.mac_address is None:
         parser.error("[-] please specify a MAC address, use --help for more information")
 
-    return opts
+    return arguments
 
 
 def change_mac(interface, mac_address):
@@ -35,12 +35,12 @@ def get_current_mac(interface):
         print("[-] Could not read a MAC address.")
 
 
-options = get_options()
-current_mac = get_current_mac(options.interface)
+args = get_arguments()
+current_mac = get_current_mac(args.interface)
 print("[+] current MAC: " + str(current_mac))
-change_mac(options.interface, options.mac_address)
-current_mac = get_current_mac(options.interface)
-if current_mac == options.mac_address:
+change_mac(args.interface, args.mac_address)
+current_mac = get_current_mac(args.interface)
+if current_mac == args.mac_address:
     print("[+] the MAC address change have been performed successfully")
     print("[+] your new MAC is " + current_mac)
 else:
