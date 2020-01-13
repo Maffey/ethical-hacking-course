@@ -38,3 +38,5 @@ except KeyboardInterrupt:
     print("\n[+] Execution aborted. Restoring ARP tables...")
     restore(target_ip, gateway_ip)
     restore(gateway_ip, target_ip)
+
+# TODO: make it work natively in terminal
