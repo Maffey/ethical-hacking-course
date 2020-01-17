@@ -46,4 +46,4 @@ if current_mac == args.mac_address:
 else:
     print("[-] operation failed. MAC address has not been changed")
 
-# TODO: add Python 3.x compatiblity to all scripts.
+# TODO: add Python 3.x compatibility to all scripts.
