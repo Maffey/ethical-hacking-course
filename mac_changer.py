@@ -8,8 +8,8 @@ import re
 
 def get_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--interface", dest="interface", help="interface to change its MAC address")
-    parser.add_argument("-m", "--mac", dest="mac_address", help="new MAC address")
+    parser.add_argument(dest="interface", help="interface to change its MAC address")
+    parser.add_argument(dest="mac_address", help="new MAC address")
     arguments = parser.parse_args()
     if arguments.interface is None:
         parser.error("[-] please specify an interface, use --help for more information")
@@ -45,3 +45,5 @@ if current_mac == args.mac_address:
     print("[+] your new MAC is " + current_mac)
 else:
     print("[-] operation failed. MAC address has not been changed")
+
+# TODO: add Python 3.x compatiblity to all scripts.
