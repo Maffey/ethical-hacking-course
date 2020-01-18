@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 # mac_changer.py - simple MAC address changer for network interfaces.
+# Python 2.7 and 3.7 compatible.
 
 import subprocess
 import argparse
@@ -28,7 +29,7 @@ def change_mac(interface, mac_address):
 
 def get_current_mac(interface):
     ifconfig_result = subprocess.check_output(["ifconfig", interface])
-    mac_address_search_result = re.search(r"(\w\w):(\w\w):(\w\w):(\w\w):(\w\w):(\w\w)", ifconfig_result)
+    mac_address_search_result = re.search(r"(\w\w):(\w\w):(\w\w):(\w\w):(\w\w):(\w\w)", str(ifconfig_result))
     if mac_address_search_result is not None:
         return mac_address_search_result.group()
     else:

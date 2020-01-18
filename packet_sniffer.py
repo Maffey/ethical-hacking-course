@@ -1,4 +1,7 @@
 #! /usr/bin/env python
+# packet_sniffer.py - packet sniffer that catches HTTP packets and filters out
+# all URLs visited and payloads associated with login information.
+# WARNING: Not compatible with Python 2.7
 
 import scapy.all as scapy
 from scapy.layers import http
@@ -37,4 +40,5 @@ def process_sniffed_packet(packet):
             print_info_frame(f"[+] Possible username/password >> {login_info}")
 
 
+print("Sniffing has been started.")
 sniff("eth0")

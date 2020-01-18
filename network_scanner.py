@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-# network_scanner.py - A network scanner which uses Scapy to find out info about a network.
+# network_scanner.py - network scanner which uses Scapy to find out info about a network.
 # Python 2.7 and 3.7 compatible.
 
 import scapy.all as scapy
