@@ -57,6 +57,5 @@ def perform_spoofing(target_ip, gateway_ip):
 
 
 args = get_arguments()
-print(args)
 target, gateway = args.target, args.gateway
 perform_spoofing(target, gateway)
