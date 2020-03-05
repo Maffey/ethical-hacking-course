@@ -7,4 +7,4 @@ To enable **IP forwarding**, enter the following command into the terminal:
 
 To create **net filter queue** (*iptables*), enter the following command:  
 `iptables -I FORWARD -j NFQUEUE --queue-num <number>`  
-Where the default \<number\> is '0'.
+Where the default `<number>` is '0'.
