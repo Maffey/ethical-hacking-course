@@ -1,8 +1,6 @@
 #! /usr/bin/env python
 # WARNING: Not compatible with Python 3.x
 
-# TODO: add a simple comments paragraph with instructions about iptable and ip forwarding
-
 import netfilterqueue
 import scapy.all as scapy
 
