@@ -3,8 +3,9 @@ Repository for all the code related to Learn Python &amp; Ethical Hacking From S
 
 ## Important notes
 To enable **IP forwarding**, enter the following command into the terminal:  
-`echo 1 > /proc/sys/net/ipv4`
+`echo 1 > /proc/sys/net/ipv4/ip_forward`
 
 To create **net filter queue** (*iptables*), enter the following command:  
-`iptables -I FORWARD -j NFQUEUE --queue-num <number>`  
+`iptables -I FORWARD -j NFQUEUE --queue-num <number>`
 Where the default `<number>` is `0`.
+For local testing, use both `OUTPUT` and `INPUT` chain.
