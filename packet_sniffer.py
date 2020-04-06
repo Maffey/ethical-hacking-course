@@ -20,7 +20,7 @@ def get_login_info(packet):
         load = packet[scapy.Raw].load
         keywords = ["user", "usr", "name", "login", "mail",
                     "password", "pass", "pwd"]
-        if any(keyword in str(load) for keyword in keywords):
+        if any(keyword in str(load).lower() for keyword in keywords):
             return load
 
 
