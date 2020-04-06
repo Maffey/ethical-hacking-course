@@ -39,3 +39,11 @@ where `<IP>` is the IP of your host server containing *hook.js*.
 
 If you are using a HTTP server, make sure insert the code snippet above
 into */var/www/html/index.html*.
+
+### SSLstrip
+To use SSLstrip, use the following command to enable it in *iptables*:
+
+`iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000`
+
+This makes so that all traffic coming to port 80, which is the default port of HTTP websites,
+will instead be redirected to port 10 000, which is the port the SSLstrip tool uses.

