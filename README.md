@@ -39,4 +39,4 @@ To use SSLstrip, use the following command to enable it in *iptables*:
 `iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000`
 
 This makes so that all traffic coming to port 80, which is the default port of HTTP websites,
-will instead be redirected to port 10 000, which is the port the SSLstrip tool uses.
+will instead be redirected to port 10000, which is the port the SSLstrip tool uses.
