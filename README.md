@@ -8,6 +8,8 @@ BeEF framework for Kali Linux is Required.
 
 `sudo apt-get install beef-xss`
 
+If SSLstrip is not provided with your distribution of Kali Linux virtual machine, install it from the original source: [moxie0/sslstrip](https://github.com/moxie0/sslstrip "A tool for exploiting Moxie Marlinspike's SSL \"stripping\" attack.").
+
 ## Guidelines
 
 ### Kali Linux
