@@ -44,5 +44,5 @@ will instead be redirected to port 10000, which is the port the SSLstrip tool us
 In order to use packet-modyfing tools together with SSLstrip, they must be configured to watch
 for port 10000 instead of 80 and commands below need to be entered into Linux shell:
 
-`iptables -I INPUT -j NFQUEUE --queue-num <number>`
+`iptables -I INPUT -j NFQUEUE --queue-num <number>`  
 `iptables -I OUTPUT -j NFQUEUE --queue-num <number>`
