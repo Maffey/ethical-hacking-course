@@ -41,7 +41,7 @@ To use SSLstrip, use the following command to enable it in *iptables*:
 This makes so that all traffic coming to port 80, which is the default port of HTTP websites,
 will instead be redirected to port 10000, which is the port the SSLstrip tool uses.
 
-In order to use packet-modyfing tools together with SSLstrip, they must be configured to watch
+In order to use packet-modifying tools together with SSLstrip, they must be configured to watch
 for port 10000 instead of 80 and commands below need to be entered into Linux shell:
 
 `iptables -I INPUT -j NFQUEUE --queue-num <number>`  
