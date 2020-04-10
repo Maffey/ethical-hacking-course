@@ -8,6 +8,7 @@ import argparse
 
 # TODO: scapy_http is obsolete and is no longer even used, remove from requirements.txt
 
+
 def get_arguments():
     parser = argparse.ArgumentParser(description="Performs a man-in-the-middle attack between two given IP addresses.")
     parser.add_argument(dest="target", help="target address of spoofed device")
