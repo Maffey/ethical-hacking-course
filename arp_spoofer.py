@@ -16,8 +16,11 @@ def get_arguments():
     if arguments.target is None:
         parser.error("[-] please specify a target IP address, use --help for more information")
     if arguments.gateway is None:
-        # TODO: If no gateway specified, perform a search on LAN and choose the default gateway of user's device.
-        parser.error("[-] please specify IP address of the target's default gateway, use --help for more information")
+        # TODO: optionally, add gateway based on a search on LAN and choose the default gateway of user's device.
+        address = arguments.target.split(".")
+        address[3] = "1"
+        arguments.gateway = ".".join(address)
+        print("[-] Gateway address was not specified. Using default address (X.X.X.1)")
 
     return arguments
 
@@ -54,6 +57,7 @@ def perform_spoofing(target_ip, gateway_ip):
         print("\n[+] Execution aborted. Restoring ARP tables...")
         restore(target_ip, gateway_ip)
         restore(gateway_ip, target_ip)
+        # TODO: add exception catching for errors such as index out of range (can't find ip address)
 
 
 args = get_arguments()
