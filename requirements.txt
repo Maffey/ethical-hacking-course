@@ -1,4 +1,6 @@
 argparse
 netfilterqueue
+requests
 scapy
 scapy_http
+
