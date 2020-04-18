@@ -3,4 +3,5 @@ netfilterqueue
 requests
 scapy
 scapy_http
+yagmail
 

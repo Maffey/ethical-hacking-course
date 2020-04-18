@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../ethical-hacking-course/.idea/ethical-hacking-course.iml" filepath="$PROJECT_DIR$/../ethical-hacking-course/.idea/ethical-hacking-course.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ethical-hacking-course.iml" filepath="$PROJECT_DIR$/.idea/ethical-hacking-course.iml" />
     </modules>
   </component>
 </project>
