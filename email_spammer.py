@@ -5,6 +5,8 @@
 import yagmail
 import time
 
+# TODO make this (and other scripts requiring personal info) use argparse,
+#  enviromental variables or some established config file.
 contents = ["First line", "Second line", "Third line ;)"]
 
 yag = yagmail.SMTP("sender@gmail.com", "******")
