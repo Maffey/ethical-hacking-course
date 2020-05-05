@@ -1,5 +1,6 @@
 argparse
 netfilterqueue
+pynput
 requests
 scapy
 scapy_http

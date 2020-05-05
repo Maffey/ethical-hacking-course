@@ -46,3 +46,7 @@ for port 10000 instead of 80 and commands below need to be entered into Linux sh
 
 `iptables -I INPUT -j NFQUEUE --queue-num <number>`  
 `iptables -I OUTPUT -j NFQUEUE --queue-num <number>`
+
+## Tips & Tricks
+* You can terminate all running python programs by typing `killall python` in the terminal.  
+
