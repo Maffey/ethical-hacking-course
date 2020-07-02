@@ -1,6 +1,5 @@
 #! /usr/bin/env python
-# packet_sniffer.py - packet sniffer that catches HTTP packets and filters out
-# all URLs visited and payloads associated with login information.
+# arp_spoof_detector.py - detects any tinkering that is being done on the local ARP table.
 # TODO: make documentation consistent in all files
 
 import scapy.all as scapy
