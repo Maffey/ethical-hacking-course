@@ -24,7 +24,7 @@ To enable a basic HTTP server, type:
 `sudo service apache2 start`
 
 ### Python
-It seems that *netfilterqueue* does not work on Python 3.x.
+You can terminate all running python programs by typing `killall python` in the terminal.  
 
 On Windows, while having both Python 2 and 3 installed, we can force to run either version by running:  
 `py -<version> <name_of_script_file>`  
@@ -52,7 +52,8 @@ for port 10000 instead of 80 and commands below need to be entered into Linux sh
 `iptables -I OUTPUT -j NFQUEUE --queue-num <number>`
 
 ## Tips & Tricks
-* You can terminate all running python programs by typing `killall python` in the terminal.  
+* It seems that *netfilterqueue* does not work on Python 3.x.  
 * To listen to incoming connections without using custom listener for reverse_backdoor.py,
-you can use `nc -vv -l -p <port_number>`.
+you can use `nc -vv -l -p <port_number>`.  
+
 
