@@ -1,5 +1,6 @@
 argparse
 netfilterqueue
+pyinstaller
 pynput
 requests
 scapy
