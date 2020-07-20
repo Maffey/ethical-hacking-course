@@ -31,7 +31,7 @@ On Windows, while having both Python 2 and 3 installed, we can force to run eith
 where `<version>` can be '2' or '3'.
 
 In order to package Python scripts into executable files, you need to have "pyinstaller" installed
- and ou have to run the following command:  
+ and you have to run the following command:  
 `pyinstaller <script_name.py> --onefile --noconsole`  
 * You might need to use a path to "pyinstaller" instead, if it's not added to PATH.  
 * `--onefile` argument ensures all the required libraries and files are put into **single** executable.  
