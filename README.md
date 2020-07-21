@@ -10,7 +10,9 @@ If SSLstrip is not provided with your distribution of Kali Linux virtual machine
 
 ## Guidelines
 
-### Kali Linux
+### Operating system
+
+#### Kali Linux
 To enable **IP forwarding**, enter the following command into the terminal:  
 `echo 1 > /proc/sys/net/ipv4/ip_forward`
 
@@ -22,6 +24,10 @@ For local testing, use both `INPUT` and `OUTPUT` chain.
 
 To enable a basic HTTP server, type:  
 `sudo service apache2 start`
+
+#### Windows
+To add an executable to Windows Registry to make the file run on the system start, the following command can be used:  
+`reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v <name_of_reg> /t REG_SZ /d <"path_to_exe">`  
 
 ### Python
 You can terminate all running python programs by typing `killall python` in the terminal.  
