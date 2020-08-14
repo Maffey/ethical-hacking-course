@@ -90,5 +90,7 @@ for port 10000 instead of 80 and commands below need to be entered into Linux sh
 * It seems that *netfilterqueue* does not work on Python 3.x.  
 * To listen to incoming connections without using custom listener for reverse_backdoor.py,
 you can use `nc -vv -l -p <port_number>`.  
+* You can find registries associated with running programs on system bootup in:  
+`Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`.  
 
 

