@@ -45,6 +45,10 @@ In order to package Python scripts into executable files, you need to have "pyin
 * `--noconsole` argument disables console, so when we run the program, no terminal shows up. Please note that some
 Python scripts may require "stdin", "stdout" and "stderr" to be handled properly (it is handled in our program).  
 * The created executable can be found in the "dist" folder.  
+* To package multiple files together with the Python script, use:  
+`--add-data "abs/path/to/file;."`  
+The dot means the file will be stored (after running) in a default temp directory.
+Can be changed to directory of preference.  
 
 If you need to create .exe file from a Linux machine (not recommended - it's better to do it natively),
 you need a Python interpreter in it's Windows version. In order to do that, Wine is required
