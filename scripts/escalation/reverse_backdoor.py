@@ -1,6 +1,8 @@
-#!python2
+#!python
 # NOTICE: this script is intended for the victim's computer.
-# Compatibility: Python 2 only. For now.
+# Compatibility: Python 3 only.
+# Personal shortfall: I really want to figure out a name for this script
+# to keep with the theme (suffix being '-er') but to no avail. :(
 
 import base64
 import json

@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 # NOTICE: This script is used as a listener for 'reverse_backdoor.py' script.
-# Compatibility: Python 2 only. For now.
+# Compatibility: Python 3 only.
 
 import base64
 import json
