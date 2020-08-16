@@ -47,6 +47,7 @@ Python scripts may require "stdin", "stdout" and "stderr" to be handled properly
 * The created executable can be found in the "dist" folder.  
 * To package multiple files together with the Python script, use:  
 `--add-data "abs/path/to/file;."`  
+This is **especially useful** when creating trojans.
 The dot means the file will be stored (after running) in a default temp directory.
 Can be changed to directory of preference.  
 
@@ -94,7 +95,10 @@ for port 10000 instead of 80 and commands below need to be entered into Linux sh
 * It seems that *netfilterqueue* does not work on Python 3.x.  
 * To listen to incoming connections without using custom listener for reverse_backdoor.py,
 you can use `nc -vv -l -p <port_number>`.  
-* You can find registries associated with running programs on system bootup in:  
+* You can find registries associated with running programs on system startup in:  
 `Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`.  
+* To check whether or not your program is detectable by antiviruses,
+you can use services like NoDistribute (doesn't share results with AVs' companies)
+or VirusTotal (shares the results, thus contributing to better IT security).  
 
 
