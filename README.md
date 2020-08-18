@@ -59,7 +59,16 @@ for port 10000 instead of 80 and commands below need to be entered into Linux sh
 
 ### Executable files
 
-#### Conveting scripts into executables
+#### Converting scripts into executables
+It's important to note we focus on creating Windows executables, since for both Linux and macOS,
+the problem becomes trivial, since both operating systems have Python installed by default,
+therefore allowing us to directly run Python scripts.
+Another problem is that on Linux, obfuscating such executable file is almost impossible - the user has to grant
+"executable" permissions through chmod anyway, meaning user must be pretty techie already.
+The good way to send a trojan would be to just send a Python script that the user wants,
+with our malicious software at the top of it. The user *still* could just check our source code though.
+On macOS however, it's easier to deal with concealing the file since there are no file extensions displayed.  
+Despite all those differences between systems, pyinstaller should work on each one of them anyway.
 ##### On Windows
 In order to package Python scripts into executable files, you need to have "pyinstaller" installed
  and you have to run the following command:  
@@ -122,7 +131,7 @@ research-on-human-reflexes.exe
 research-on-human-refl‮fdp.exe
 ```
 Remember that such file needs to be compressed into a .zip file or similar,
-since direct download will cause this character to be removed in the process.
+since direct download will cause this character to be removed in the process.  
 
 ## Tips & Tricks
 * It seems that *netfilterqueue* does not work on Python 3.x.  
