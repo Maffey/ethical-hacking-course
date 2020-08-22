@@ -139,6 +139,8 @@ since direct download will cause this character to be removed in the process.
 you can use `nc -vv -l -p <port_number>`.  
 * You can find registries associated with running programs on system startup in:  
 `Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`.  
+* It's best to find a good, extensive list of potential subdomain names
+on the web and use it instead of creating our own.  
 
 
 
