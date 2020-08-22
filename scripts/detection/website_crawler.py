@@ -14,7 +14,7 @@ def request(url):
         pass
 
 
-target_url = "horyzont.eu"
+target_url = "google.com"
 
 with open("../../resources/subdomains.txt", "r") as wordlist_file:
     for line in wordlist_file:
