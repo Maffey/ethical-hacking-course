@@ -14,8 +14,9 @@ def request(url):
         pass
 
 
-target_url = "google.com"
+target_url = "10.0.2.4"
 
+# TODO: Add finding directories too, if no such script is going to be made during the course.
 with open("../../resources/subdomains.txt", "r") as wordlist_file:
     for line in wordlist_file:
         word = line.strip()

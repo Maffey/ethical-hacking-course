@@ -143,5 +143,9 @@ you can use `nc -vv -l -p <port_number>`.
 on the web and use it instead of creating your own that most likely won't be as effective.  
 * You **should** test your crawler on your own machine (such as Metasploit),
 since such action against third-party server is most likely illegal in most of the countries.
+* Remember to crawl websites responsibly.
+Refer to `robots.txt` file, do not throttle the server you are crawling and preferably,
+ask the owner of the server for permission. It's highly recommended to use Metasploitable machine for those purposes.  
+
 
 
