@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 
 def extract_links_from(url):
     response = requests.get(url)
-    return re.findall('(?:href=")(.*?)(?:")', response.content.decode(errors="ignore"))
+    return re.findall('href="(.*?)"', response.content.decode(errors="ignore"))
 
 
 def crawl(url):

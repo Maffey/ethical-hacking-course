@@ -1,4 +1,5 @@
 argparse
+beautifulsoup4
 netfilterqueue
 pyinstaller
 pynput
