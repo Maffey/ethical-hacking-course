@@ -5,6 +5,5 @@ pyinstaller
 pynput
 requests
 scapy
-scapy_http
 yagmail
 
