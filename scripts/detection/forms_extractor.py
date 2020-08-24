@@ -38,3 +38,4 @@ for form in forms_list:
 
     post_result = requests.post(post_url, data=post_data)
     print(post_result.content.decode(errors="ignore"))
+# TODO: Remove if obsolete (all the functionality should be implemented in vulnerability_scanner.py)

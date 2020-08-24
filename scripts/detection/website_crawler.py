@@ -24,3 +24,5 @@ with open("../../resources/subdomains.txt", "r") as wordlist_file:
         response = request(tested_url)
         if response:
             print(f"[+] Discovered subdomain --> {tested_url}")
+
+# TODO: Remove if obsolete (all the functionality should be implemented in vulnerability_scanner.py)

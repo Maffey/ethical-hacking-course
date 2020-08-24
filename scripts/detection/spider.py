@@ -32,3 +32,4 @@ target_url = "http://10.0.2.4"
 target_links = []
 
 crawl(target_url)
+# TODO: Remove if obsolete (all the functionality should be implemented in vulnerability_scanner.py)
