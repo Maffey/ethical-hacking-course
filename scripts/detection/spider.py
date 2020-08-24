@@ -12,7 +12,6 @@ def extract_links_from(url):
 
 
 def crawl(url):
-
     href_links = extract_links_from(url)
 
     for link in href_links:
@@ -21,7 +20,8 @@ def crawl(url):
         if "#" in link:
             link = link.split("#")[0]
 
-        if url in link and link not in target_links:
+        # Check for repeated links and links that lead to external websites (outside our targeted web app scope).
+        if target_url in link and link not in target_links:
             target_links.append(link)
             print(link)
             crawl(link)
