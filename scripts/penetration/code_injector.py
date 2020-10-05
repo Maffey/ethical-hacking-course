@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 # Compatibility: Python 3.x
-# TODO: make it work
 
 import netfilterqueue
 import scapy.all as scapy
@@ -17,7 +16,7 @@ def set_load(packet, load):
 
 def process_packet(packet):
     scapy_packet = scapy.IP(packet.get_payload())
-    if scapy_packet.haslayer(scapy.Raw) and scapy_packet.haslayer(scapy.Raw):
+    if scapy_packet.haslayer(scapy.Raw) and scapy_packet.haslayer(scapy.TCP):
         load = scapy_packet[scapy.Raw].load.decode(errors="ignore")
         if scapy_packet[scapy.TCP].dport == 80:  # change port to '80' if not using SSLstrip (1000 port for SSL)
             print("[+] Request")
